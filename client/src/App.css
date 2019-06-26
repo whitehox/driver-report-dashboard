@@ -5,9 +5,10 @@
 html,
 body {
   height: 100%;
+  font-family: 'Montserrat', sans-serif;
 }
 #root {
-  height: 100%;
+  height: auto;
 }
 .App {
   display: flex;
