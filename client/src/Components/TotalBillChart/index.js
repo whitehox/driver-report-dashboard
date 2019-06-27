@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chart from 'react-apexcharts';
 import './TotalBillChart.css';
+import Awards from '../Award/';
 
 import fetch from 'node-fetch';
 
@@ -40,14 +41,9 @@ class TotalBillChart extends Component {
         },
         xaxis: {
           categories: [
-            'John',
-            'Joe',
-            'Jake',
-            'Amber',
-            'Peter',
-            'Mary',
-            'David',
-            'Lily',
+            'Billed Total',
+            'Cash Billed Total',
+            'Non-Cash Billed Total',
           ],
           labels: {
             style: {
@@ -71,7 +67,6 @@ class TotalBillChart extends Component {
         return data.json();
       })
       .then(data => {
-        let labels = [];
         let figure = [];
         for (let key in data.data) {
           if (
@@ -79,12 +74,10 @@ class TotalBillChart extends Component {
             key === 'cashBilledTotal' ||
             key === 'nonCashBilledTotal'
           ) {
-            labels.push(key);
             figure.push(data.data[key]);
           }
         }
         this.setState({
-          options: { xaxis: { categories: [...labels] } },
           series: [{ data: [...figure] }],
         });
       });
@@ -102,6 +95,7 @@ class TotalBillChart extends Component {
             />
           </div>
         </div>
+        <Awards />
       </div>
     );
   }
