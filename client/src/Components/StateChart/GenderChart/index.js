@@ -10,9 +10,6 @@ function GenderChart(props) {
     series: [],
     labels: [],
   });
-  const [optionsState, setOptionsState] = useState({
-    options: {},
-  });
 
   useEffect(() => {
     fetch('api/stats')
@@ -38,7 +35,7 @@ function GenderChart(props) {
   return (
     <div className="donut">
       <Chart
-        options={optionsState.options}
+        options={{}}
         series={initialState.series}
         type="donut"
         width="380"
